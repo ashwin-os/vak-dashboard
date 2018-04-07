@@ -11,6 +11,9 @@ export {
 }                                      from './sideMenu';
 // teamMates:
 export {fetchTeamMatesDataIfNeeded}    from './teamMates';
+
+export {fetchVaksanaStats}    from './teamMates';
+
 // userInfos:
 export {fetchUserInfoDataIfNeeded}     from './userInfos';
 // views:

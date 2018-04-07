@@ -5,7 +5,8 @@
 import moment               from 'moment';
 import { appConfig }        from '../../config';
 import {
-  fetchMockTeamMatesData
+  fetchMockTeamMatesData,
+  fetchMockVaksanaStats
 }                           from '../../services';
 import {
   getTeamMatesData
@@ -61,6 +62,7 @@ export function fetchTeamMatesDataIfNeeded() {
     }
   };
 }
+
 function requestTeamMatesData(time = moment().format()) {
   return {
     type:       REQUEST_TEAM_MATES_DATA,
@@ -87,7 +89,7 @@ function fetchTeamMatesData() {
   return dispatch => {
     dispatch(requestTeamMatesData());
     if (appConfig.DEV_MODE) {
-      fetchMockTeamMatesData()
+      fetchMockVaksanaStats()
         .then(
           data => dispatch(receivedTeamMatesData(data))
         );

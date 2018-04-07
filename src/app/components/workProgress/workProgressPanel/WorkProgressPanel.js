@@ -23,7 +23,7 @@ WorkProgressPanel.propTypes = {
 };
 
 WorkProgressPanel.defaultProps = {
-  title: 'Work Progress'
+  title: 'Service Usage Summary'
 };
 
 export default WorkProgressPanel;

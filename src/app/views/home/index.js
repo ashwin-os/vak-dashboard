@@ -25,7 +25,7 @@ const mapDispatchToProps = (dispatch) => {
         leaveHome: actions.leaveHome,
 
         fetchEarningGraphDataIfNeeded:  actions.fetchEarningGraphDataIfNeeded,
-        fetchTeamMatesDataIfNeeded:     actions.fetchTeamMatesDataIfNeeded
+        fetchTeamMatesDataIfNeeded:     actions.fetchTeamMatesDataIfNeeded,
       },
       dispatch)
   };

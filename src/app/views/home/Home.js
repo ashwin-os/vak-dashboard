@@ -8,11 +8,7 @@ import {
   AnimatedView,
   StatsCard,
   EarningGraph,
-  Notifications,
   WorkProgress,
-  TwitterFeed,
-  TodoListDemo,
-  TeamMatesDemo
 }                         from '../../components';
 
 class Home extends PureComponent {
@@ -21,19 +17,18 @@ class Home extends PureComponent {
     earningGraphDatasets: PropTypes.array,
     teamMatesIsFetching:  PropTypes.bool,
     teamMates:            PropTypes.arrayOf(
-      PropTypes.shape({
-        picture:      PropTypes.string,
-        firstname:    PropTypes.string,
-        lastname:     PropTypes.string,
-        profile:      PropTypes.string,
-        profileColor: PropTypes.oneOf(['danger', 'warning', 'info', 'success'])
+      PropTypes.arrayOf({
+        clientId: PropTypes.string,
+        reqTime: PropTypes.string,
+        timeTaken: PropTypes.string,
+        cost: PropTypes.string
       })
     ),
     actions: PropTypes.shape({
       enterHome: PropTypes.func,
       leaveHome: PropTypes.func,
       fetchEarningGraphDataIfNeeded:  PropTypes.func,
-      fetchTeamMatesDataIfNeeded:     PropTypes.func
+      fetchTeamMatesDataIfNeeded:     PropTypes.func,
     })
   };
 
@@ -47,7 +42,7 @@ class Home extends PureComponent {
       actions: {
         fetchEarningGraphDataIfNeeded,
         fetchTeamMatesDataIfNeeded
-      }
+            }
     } = this.props;
 
     fetchEarningGraphDataIfNeeded();
@@ -74,70 +69,51 @@ class Home extends PureComponent {
           style={{marginBottom: '5px'}}>
           <div className="col-md-3">
             <StatsCard
-              statValue={'3200'}
-              statLabel={'Total Tasks'}
+              statValue={'127'}
+              statLabel={'Total Requests'}
               icon={<i className="fa fa-check-square-o" />}
               backColor={'red'}
             />
           </div>
           <div className="col-md-3">
             <StatsCard
-              statValue={'2200'}
-              statLabel={'Total Messages'}
-              icon={<i className="fa fa-envelope-o" />}
+              statValue={'523ms'}
+              statLabel={'Avg Time'}
+              icon={<i className="fa fa-clock-o" />}
               backColor={'violet'}
             />
           </div>
           <div className="col-md-3">
             <StatsCard
-              statValue={'100,320'}
-              statLabel={'Total Profit'}
+              statValue={'12.65'}
+              statLabel={'Total Earnings'}
               icon={<i className="fa fa-dollar" />}
-              backColor={'blue'}
+              backColor={'green'}
             />
           </div>
           <div className="col-md-3">
             <StatsCard
-              statValue={'4567'}
-              statLabel={'Total Documents'}
-              icon={<i className="fa fa-paperclip" />}
-              backColor={'green'}
+              statValue={'3'}
+              statLabel={'Clients'}
+              icon={<i className="fa fa-bar-chart-o" />}
+              backColor={'blue'}
             />
           </div>
         </div>
 
         <div className="row">
           <div className="col-md-8">
-            <EarningGraph
+          <WorkProgress content={teamMates}/>
+
+          </div>
+          <div className="col-lg-4">
+          <EarningGraph
               labels={earningGraphLabels}
               datasets={earningGraphDatasets}
             />
           </div>
-          <div className="col-lg-4">
-            <Notifications />
-          </div>
         </div>
 
-        <div className="row">
-          <div className="col-md-8">
-            <WorkProgress />
-          </div>
-          <div className="col-md-4">
-            <TwitterFeed />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-5">
-            <TeamMatesDemo
-              isFetching={teamMatesIsFetching}
-              members={teamMates}
-            />
-          </div>
-          <div className="col-md-7">
-            <TodoListDemo />
-          </div>
-        </div>
 
       </AnimatedView>
     );

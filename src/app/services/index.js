@@ -12,7 +12,8 @@ export {
 export {
   fetchMockEarningGraphData,
   fetchMockUserInfosData,
-  fetchMockTeamMatesData
+  fetchMockTeamMatesData,
+  fetchMockVaksanaStats
 }                             from './fetchMocks';
 // API:
 export {
