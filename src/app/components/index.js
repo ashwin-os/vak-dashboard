@@ -57,6 +57,6 @@ export {
 }                                     from './tabPanel';
 export { default as Alert }           from './alert/Alert';
 export { default as Button }          from './button/Button';
-export { default as Label }           from './label/Label';
+export { default as Label }           from './label/label';
 export { default as AnimatedView }    from './animatedView/AnimatedView';
 export { default as ScrollTop }       from './scrollToTop/ScrollToTop';

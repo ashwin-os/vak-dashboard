@@ -53,12 +53,20 @@ export const fetchMockTeamMatesData = (
 export const fetchMockVaksanaStats = (
   timeToWait: number = appConfig.FAKE_ASYNC_DELAY
 ): Promise<any> => {
-  return new Promise(
+
+  return fetch('http:\/\/localhost:5000/stats').then(function(response2) {
+    return response2.json();
+  }).then(function(myJson) {
+    console.log(myJson);
+    return myJson;
+  });
+
+  /*return new Promise(
     resolve => {
       setTimeout(
         () => resolve([...vaksanaStatsMock]),
         timeToWait
       );
     }
-  );
+  );*/
 };

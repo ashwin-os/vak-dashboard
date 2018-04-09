@@ -12,7 +12,9 @@ import {
   TableCol
 } from '../../components';
 
-const headers = ['#', 'ClientId', 'Request Time', 'TimeTaken(ms)', 'Cost($)'];
+const headers = ['Call Count', 'Success Count', 'TimeTaken(ms)', 'Cost($)'];
+const keys = ['call_count', 'success_count', 'time_ms', 'cost'];
+
 
 export default class WorkProgress extends PureComponent {
 
@@ -39,7 +41,7 @@ export default class WorkProgress extends PureComponent {
                 return (
                   <TableRow key={contentRowIdx}>
                     {
-                      contentRow.map(
+                      this.getRow(contentRow.stats).map(
                         (contentColumn, contentColumnIdx) => {
                           return (
                             <TableCol key={contentColumnIdx}>
@@ -57,5 +59,14 @@ export default class WorkProgress extends PureComponent {
         </TableBody>
       </Table>
     </WorkProgressPanel>
+  }
+
+  getRow(contentRow) {
+    var retVal = [];
+    Object.keys(keys).forEach(function(key) {
+    var val = contentRow[keys[key]];
+    retVal.push(val);
+    });
+    return retVal;
   }
 }
